@@ -1,0 +1,32 @@
+\contentsline {chapter}{\numberline {1}Linear Diophantine Equations in $\mathbb {Z}^2$}{2}{chapter.1}%
+\contentsline {subsection}{\numberline {1.0.1}Example}{2}{subsection.1.0.1}%
+\contentsline {section}{Theorem: LDET Part 1}{2}{section*.2}%
+\contentsline {subsection}{\numberline {1.0.2}Proof of forwards direction}{3}{subsection.1.0.2}%
+\contentsline {subsection}{\numberline {1.0.3}Proof of backwards direction}{3}{subsection.1.0.3}%
+\contentsline {subsection}{\numberline {1.0.4}Remark}{3}{subsection.1.0.4}%
+\contentsline {section}{Theorem: LDET Part 2}{3}{section*.3}%
+\contentsline {subsection}{\numberline {1.0.5}Proof}{3}{subsection.1.0.5}%
+\contentsline {section}{\numberline {1.1}More Examples}{3}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Geometric Understanding}{4}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Nonnegative $\text {sol}^\text {n}\text { }$}{4}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Find all integer $\text {sol}^\text {n}\text { }$to $15x+35y^2 = 5$}{4}{subsection.1.1.3}%
+\contentsline {chapter}{\numberline {2}Congruence and Modular Arithmetic}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Clockwork Arithmetic Analogy}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Definition}{5}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Examples}{5}{section.2.3}%
+\contentsline {section}{Proposition: Congruence is an Equivalence Relation}{5}{section*.4}%
+\contentsline {section}{\numberline {2.4}Recap}{5}{section.2.4}%
+\contentsline {section}{Proposition: Arithmetic Rules of Congruence}{5}{section*.5}%
+\contentsline {subsection}{\numberline {2.4.1}Examples}{6}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Proof of addition}{6}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Remark on Division}{6}{subsection.2.4.3}%
+\contentsline {section}{Proposition: Congruent Division}{6}{section*.6}%
+\contentsline {subsection}{\numberline {2.4.4}Proof}{6}{subsection.2.4.4}%
+\contentsline {subsection}{\numberline {2.4.5}More Examples}{7}{subsection.2.4.5}%
+\contentsline {section}{Theorem: Congruence and Remainders}{7}{section*.7}%
+\contentsline {subsection}{\numberline {2.4.6}Example}{7}{subsection.2.4.6}%
+\contentsline {subsection}{\numberline {2.4.7}Observation}{7}{subsection.2.4.7}%
+\contentsline {section}{\numberline {2.5}Warning}{7}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Example}{7}{subsection.2.5.1}%
+\contentsline {section}{Proposition: Finite Integers}{7}{section*.8}%
+\contentsline {subsection}{\numberline {2.5.2}Proof}{8}{subsection.2.5.2}%
