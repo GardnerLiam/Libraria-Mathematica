@@ -10,6 +10,7 @@
 \usepackage{runic}
 \usepackage{mathtools}
 \usepackage{graphicx}
+\usepackage{mathrsfs}
 \usepackage[breaklinks=true,a4paper=true,pagebackref=true]{hyperref}
 \graphicspath{ {figures/} }
 \geometry{
@@ -17,6 +18,11 @@
  total={170mm,257mm},
  left=20mm,
  top=20mm,
+}
+\hypersetup{
+    colorlinks=true,
+    linktoc=true,
+    linkcolor=blue,
 }
 \title{Libraria Calculosis}
 \author{Liam Gardner}
@@ -33,6 +39,7 @@
 \newcommand\dydx{\frac{\text{dy}}{\text{dx}}}
 \newcommand{\Lim}[1]{\raisebox{0.5ex}{\scalebox{0.8}{$\displaystyle \lim_{#1}\;$}}}
 \newcommand{\dfdx}{\frac{\text{df}}{\text{dx}}}
+\newcommand \interval[1]{\,^a_b\mathcal{I}_{#1}}
 \begin{document}
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
 
@@ -117,7 +124,13 @@ $$\dydx=\frac{\frac{1}{2}}{\frac{\sqrt{3}}{2}} = \frac{-1}{\sqrt{3}}$$
 $$\dydx=\frac{\frac{1}{2}}{\frac{-\sqrt{3}}{2}} = \frac{1}{\sqrt{3}}$$
 \tab
 Thus, we see that the two slopes of the unit circle at $x=\frac{1}{2}$ are $\frac{\pm1}{\sqrt{3}}$.
-\nextline
+\newline
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.35\textwidth]{l24f0}
+\caption{Slopes of the unit circle at $x=\frac{1}{2}$}
+\end{figure}
+\newpage
 Trying this again using $x^2+y^2=-1$, we see that the implicit derivative is the same as $x^2+y^2=1$, however, the derivative doesn't actually make sense, as the sum of two squares is always nonnegative. Thus, $x^2+y^2=-1$ does not define a function in $\mathbb{R}^2$, as there are no pairs of real numbers $(x,y)$ that satisfy $x^2+y^2=-1$.
 \nextline
 Similarly, the relation $2x=x$ defines a point rather than a function, and thus differentiating doesn't yield anything reasonable, as the result is $2=1$. 
@@ -165,7 +178,7 @@ $\mathbf{\text{def}^{\text{n}}}$: A point $c$ is a local maximum of a function $
 \caption{Examples of local and global extrema}
 \end{figure}
 
-\thm{Local Extrema Theory}{LET}
+\thm{Local Extrema Theorem}{LET}
 \tab
 If $c$ is a local extrema and $f^\prime(c)$ exists, then we know $f^\prime(c)=0$.
 \subsection{proof}
@@ -207,4 +220,117 @@ This topic will be revisited upon the genesis of the curve sketching unit.
 \thm{Rolle's Theorem}{RT}
 \tab
 If $f$ is a continuous function on $[a,b]$ and differentiable on $(a,b)$, and if $0=f(a)=f(b)$, then $\exists c\in (a,b)$ such that $f^\prime(c)=0$.
+\subsection{Proof}
+\tab
+Suppose that $f$ is continuous on $[a,b]$ and differentiable on $(a,b)$ with $f(a)=f(b)=0$.
+\subsection*{Case 1}
+\tab $\exists x_0\in(a_b)$ with $f(x_0)>0$. The Extreme Value Theorem, shows that $f(x)$ achieves a max value on $[a,b]$. We know that the maximum point $c\in (a,b)$  is thus not at the endpoints. Hence, since $f^\prime(c)$ exists, by the \hyperref[sec:LET]{Local Extrema Theorem} we know that $f^\prime(c)=0$.
+\subsection*{Case 2}
+\tab $\exists x_0\in(a,b)$ with $f(x_0)<0$. The Extreme Value Theorem shows that $f(x)$ achieves a min value on $[a,b]$. We know that the minimum point $c\in(a,b)$ is thus not at the endpoints. Hence, since $f^\prime(c)$ exists, by the \hyperref[sec:LET]{Local Extrema Theorem} we know that $f^\prime(c)=0$.
+\subsection*{Case 3}
+\tab $f:[a,b]\rightarrow 0$, hence $f^\prime:(a,b)\rightarrow 0$ and thus there are lots of choices for $c$.
+\thm{The Mean Value Theorem}{MVT}
+\tab
+Suppose $f$ is continuous on $[a,b]$ and differentiable on $(a,b)$. Then, $\exists c\in(a,b)$ such that $f^\prime(c)=\frac{f(b)-f(a)}{b-a}$. Rolle's Theorem is a special case of Mean Value Theorem.
+\subsection{Proof}
+\tab Let $h(x)=f(x)-f(a)-\left(\frac{f(b)-f(a)}{b-a}\right)(x-a)$. Notice that $h(a)=h(b)=0$. Since $h$ is continuous on $[a,b]$ and differentiable on $(a,b)$. Thus, since the conditions of Rolle's Theorem are met, we know that $\exists c\in(a,b)$ such that $h^\prime(c)=0$.\nextline
+$$\ddx{h^\prime(x)}\lvert_{x=c}=f^\prime(c)-\frac{f(b)-f(a)}{b-a}=0$$
+\tab
+Therefore, we get that $f^\prime(c)=\frac{f(b)-f(a)}{b-a}$.
+\subsection{Examples}
+\tab\textit{Find all points $c$ that satisfy the mean value theorem for} $f(x)=x^3+2x^2-x$ on $[-1,2]$\nextline
+By MVT we know that $f^\prime(c)=\frac{f(2)-f(-1)}{2-(-1)} = \frac{14-2}{3} = 4$. Therefore, there is a point $c$ where the derivative is equal to 4. $f^\prime(x)=3x^2+4x-1$
+$$f^\prime(x)=3x^2+4x-1=c$$
+$$x=\frac{-4\pm\sqrt{76}}{6}$$
+\tab Since $\frac{-4-\sqrt{76}}{6}\not\in [-1,2]$, we know that it is not a proper value of $c$. Therefore, the only value of $c$ for this interval is $c=\frac{\sqrt{76}-4}{6}$
+\newline
+\nextline
+\textit{Suppose that a function $f$ is continuous and differentiable everywhere. Furthermore, suppose $f$ has two roots. Then show $f^\prime$ has at least one root}
+\nextline
+Let $a,b$ be distinct roots of $f$, then $f(a)=f(b)=0$. Thus, by Rolle's Theorem, we know that $\exists c\in(a,b)$ such that $f^\prime(c)=\frac{f(b)-f(a)}{b-a}=0$ and thus there is at least one root of $f^\prime$.
+\section{Applications of MVT}
+\tab
+$\text{Def}^{\text{n}}$: A function $F$ is called an antiderivative of $f$ is $F^\prime(x)=f(x) \forall x\in\mathbb{R}$
+\nextline
+$F(x)=\frac{x^2}{2}$ is an antiderivative of $f(x)$, since $F^\prime(x)=\frac{2x}{2}=x=f(x)$
+
+\thm{The Constant Function Theorem}{CFT}
+\tab
+If $f^\prime(x)=0$ $\forall x\in\mathcal{I}$ then $f(x)=c$ $\forall x\in\mathcal{I}$.
+\subsection{Proof}
+\tab
+Let $\mathcal{I}$ be some interval, then suppose $f^\prime(x)=0$ $\forall x\in\mathcal{I}$. Note that $f$ is continuous on $\mathcal{I}$. Let $x_1, x_2\in \mathcal{I}$ where $x_1\neq x_2$. Then, let $f(x_1)=k$. By the Mean Value Theorem, $\exists c\in(x_1,x_2)$ such that $f^\prime(c)=\frac{f(x_2)-f(x_1)}{x_2-x_1}$. Since $(x_1,x_2)\subseteq \mathcal{I}$, we know that $f^\prime(c)=0$ and thus $\frac{f(x_2)-f(x_1)}{x_2-x_1}=0\implies f(x_2)-f(x_1)=0\implies f(x_2)=f(x_1)=k$.
+\nextline
+Since both $x_1$ and $x_2$ were arbitrary, we conclude that $f(x)=k$ $\forall x\in\mathcal{I}$
+\thm{Uniqueness of Antiderivatives}{UA}
+\tab
+Antiderivatives are not unique, since if we take $F(x)=h(x)+c$ and $f(x)=h^\prime(x)$ then $F^\prime(x)=h^\prime(x)=f(x) \forall c\in\mathbb{R}$. However, outside of adding constants, antiderivatives are unique (although it is not straightforward). This can be shown using the Mean Value Theorem.
+\nextline
+If $f^\prime(x)=g^\prime(x)$ $\forall x\in\mathcal{I}$, and thus $f(x)$ and $g(x)$ are antiderivatives of the same function, then $\exists k\in\mathbb{R}$ such that $f(x)=g(x)+k$ $\forall x\in\mathcal{I}$.
+\subsection{Proof}
+Let $h(x)=f(x)-g(x)$ and thus $h^\prime(x)=f^\prime(x)-g^\prime(x)=0$ $\forall x\in\mathcal{I}$. Hence, by \hyperref[sec:CFT]{The Constant Function Theorem}, $\exists k\in\mathbb{R}$ such that $h(x)=k$ $\forall x\in\mathcal{I}$. Therefore, $h(x)=f(x)-g(x)=k$ $\forall k\in\mathcal{I}\implies f(x)=g(x)+k$ $\forall x\in\mathcal{I}$.
+\subsection{Notation}
+The family of antiderivatives for a function $f(x)$ is denoted as follows, where $f(x)$ is referred to as the ``integrand'' and the dx is referred to as the ``variable of integration''.
+$$F(x)=\int f(x)\text{ dx}$$
+\tab As an example, $\int x^2\text{ dx} = \frac{x^2}{2}$
+\thm{Increasing/Decreasing Function Theorem}{IncFT}
+\tab
+Let $\mathcal{I}$ be some interval with $x_1,x_2\in\mathcal{I}$ where $x_1< x_2$.
+\begin{enumerate}
+\item If $f^\prime(x)>0 \,\forall x\in\mathcal{I}$ then, $f(x_2)>f(x_1)$ and we say $f$ is \textit{increasing} on $\mathcal{I}$
+\item If $f^\prime(x)\geq0 \,\forall x\in\mathcal{I}$ then, $f(x_2)\geq f(x_1)$ and we say $f$ is \textit{non-decreasing} on $\mathcal{I}$
+\item If $f^\prime(x)<0 \,\forall x\in\mathcal{I}$ then, $f(x_2)<f(x_1)$ then we say $f$ is \textit{decreasing} on $\mathcal{I}$
+\item If $f^\prime(x)\leq0 \,\forall x\in\mathcal{I}$ then, $f(x_2)\leq f(x_1)$ and we say $f$ is \textit{non-increasing} on $\mathcal{I}$
+\end{enumerate}
+\subsection{Proof of (1)}
+\tab
+Let $\mathcal{I}$ be an interval such that $x_1<x_2 \in\mathcal{I}$. Suppose that $f^\prime(x)>0\,\forall x\in\mathcal{I}$. Since $f^\prime$ exists, we know that $f$ is continuous $\forall x\in\mathcal{I}$. We can thus apply \hyperref[sec:MVT]{The Mean Value Theorem} to $[x_1, x_2]$.\nextline
+$\exists c\in(x_1,x_2)$ such that $\frac{f(x_2)-f(x_1)}{x_2-x_1} = f^\prime(c)$. Since we know $f^\prime(c)>0$ and $x_2-x_1>0$, we know that $f(x_2)-f(x_1)>0$. Thus, $f$ is increasing over $\mathcal{I}$.
+\subsection{Converses}
+\tab
+The converse of (2) and (4) are true (if $f(x)$ is non-increasing/non-decreasing on $\mathcal{I}$ then $f^\prime(x) >0 \,\forall x\in\mathcal{I}$).
+\nextline
+The converse of (1) and (3) are false. Consider $f(x)=x^3$. Where $f(x_2)>f(x_1) \forall x_2>x_1$ However, $f^\prime(0)=0$.
+\section{Functions with Bounded Derivatives}
+What information can we derive from a function $f$ if we know the bounds of $\dfdx$?
+\nextline
+Suppose $m\leq \dfdx \leq M$ $\forall x\in(a,b)$. If $f$ is continuous on $[a,b]$ then we can use \hyperref[sec:MVT]{Mean Value Theorem}.
+\nextline
+Let $x\in(a,b)$. Applying MVT we get $\exists c\in(a,x)$ with $f^\prime(c) = \frac{f(x)-f(a)}{x-a}$.
+$$m \leq f^\prime(c) =\frac{f(x)-f(a)}{x-a} \leq M$$
+$$m(x-a) \leq f(x)-f(a) \leq M(x-a)$$
+$$f(a) + m(x-a) \leq f(x) \leq f(a) + M(x-a)$$
+\tab
+This implies that $f(x)$ is bounded between two lines.
+\thm{Bounded Derivative Theorem}{BDT}
+\tab
+If a function $f$ is continuous on $\interval{o}$ and differentiable on $\interval{c}$ with $m\leq f^\prime(x)\leq M$ $\forall x\in\interval{o}$ then $f(a)+m(x-a)\leq f(x)\leq f(a)+M(x-a)$ $\forall x \in\interval{c}$.
+\subsection{Example}
+Show that $\ln(3)\in\left[\frac{7-e}{4}, \frac{3}{e}\right]$\nextline
+Let $f(x)=\ln(x)$. Hence, $f^\prime(x)=\frac{1}{x}$. We need to bound $f^\prime(x)$ to use the theorem. Thus, we need some interval $\interval{c}$ with $a<3<b$. We also need $f(a)$ to be easily computable. If we take $a=e$ then $\ln(a)=1$. and $1<3$. Since we don't need $f(b)$ to be easily computable, we can take $b=4$.
+\nextline
+Note that $\ddx{\frac{1}{x}} = \frac{-1}{x^2}$. Thus, from the \hyperref[sec:IncFT]{Increasing Function Theorem} we know that $f^\prime(x)$ is decreasing. Thus, $f^\prime(4) \leq f^\prime(x) \leq f^\prime(e)$. Since the derivative can be bound between $\frac{1}{4}$ and $\frac{1}{e}$, the natural choice for a range would be $f^\prime(x)\in\left[\frac{1}{4}, \frac{1}{e}\right]$.
+\nextline
+$$f(a) + m(x-a) \leq f(x) \leq f(a)+M(x-a)$$
+$$1 + \frac{1}{4}(x-e) \leq f(x) \leq f(a)+\frac{1}{e}(x-a)$$
+$$1 + \frac{1}{4}(3-e) \leq f(x) \leq 1 + \frac{1}{e}(x-e)$$
+$$\frac{7-e}{4} \leq f(x) \leq \frac{3}{e}$$
+\newline
+\null\hfill$\mathcal{QED}$
+\nextline
+Check out the example in the textbook that uses Bounded Derivative Theorem to show the following;
+$$\lim_{n\rightarrow\infty} \left(1+\frac{1}{n}\right)^n = e$$
+\section{Comparing Functions Using Derivatives}
+Suppose $f$ and $g$ are continuous at $x=a$ and $f(a)=g(a)$
+\begin{enumerate}
+\item If $f^\prime(x) < g^\prime(x)$ $\forall x>a$ then $f(x)<g(x)$ $\forall x>a$
+\item If $f^\prime(x) > g^\prime(x)$ $\forall x>a$ then $f(x)>g(x)$ $\forall x>a$
+\item If $f^\prime(x) \leq g^\prime(x)$ $\forall x>a$ then $f(x)\leq g(x)$ $\forall x>a$
+\item If $f^\prime(x) \geq g^\prime(x)$ $\forall x>a$ then $f(x)\geq g(x)$ $\forall x>a$
+\end{enumerate}
+\subsection{Proof of (3)}
+\tab
+Suppose $f$ and $g$ are continuous at $x=a$ with $f(a)=g(a)$ and $f^\prime(x) \leq g^\prime(x)$ $\forall x>a$.
+\nextline
+Let $h(x)=f(x)-g(x)$. Then $h(a)=f(a)-g(a)=0$. Let $x>a$, $h^\prime(x)=f^\prime(x)-g^\prime(x)$. By the hypothesis, we know that when $x>a$ that $f^\prime(x)\leq g^\prime(x)$, thus, by the \hyperref[sec:IncFT]{Decreasing Function Theorem}. Hence, $h(x)\leq 0\implies f(x)-g(x)\leq 0\implies f(x)\leq g(x)$ $\forall x>a$.
 \end{document}

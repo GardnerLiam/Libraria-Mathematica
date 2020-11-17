@@ -18,6 +18,11 @@
  left=20mm,
  top=20mm,
 }
+\hypersetup{
+    colorlinks=true,
+    linktoc=true,
+    linkcolor=blue,
+}
 \title{Libraria Algebrae}
 \author{Liam Gardner}
 \date{\today}
@@ -29,7 +34,9 @@
 \newcommand\fs{\mbox{\large $\mathrlap{f}s\,$}\,}
 \newcommand\thm[2]{\section*{Theorem: #1}\label{sec:#2}\addcontentsline{toc}{section}{Theorem: #1}}
 \newcommand\propn[2]{\section*{Proposition: #1}\label{sec:#2}\addcontentsline{toc}{section}{Proposition: #1}}
-\renewcommand\mod[1]{\text{ (mod #1)}}
+\newcommand\defn{\textbf{Definition}: }
+
+\renewcommand\mod[1]{\text{ }\left(\text{mod }#1\right)}
 
 
 \begin{document}
@@ -265,6 +272,9 @@ $$5\not\equiv 2\mod{6}$$
 \propn{Congruent Division}{CD}
 \tab
 If $ab\equiv ac\mod{m}$ and $a$ is coprime to $m$, then $b\equiv c\mod{m}$
+\propn{Congruent Powers}{CP}
+\tab
+$a\equiv b\mod{m}\implies a^n\equiv b^n\mod{m}$
 \subsection{Proof}
 \tab
 $$ab\equiv bc\mod{m}\iff m\lvert (ab-ac)\iff m\lvert a(b-c)$$
@@ -333,4 +343,191 @@ Notice if $a\equiv b\mod{m}$, we get that $m\lvert(a-b)$ and thus $m\lvert(qm+r 
 $\implies m\lvert(m(q+q^\prime) + (r-r^\prime))$ Then by DIC it follows that \nextline
 $\iff m\lvert (r-r^\prime)$ \nextline
 Now since $0\leq r < m$ and $0 \leq r^\prime < m$, we get that $-m\leq r-r^\prime < m$. Now, since $m\lvert(r-r^\prime)$, we get that by BBD, that $m\leq \abs{r-r^\prime}$ and so for both inequalities to hold, $r=r^\prime$.
+\propn{Congruent if and only if same remainder}{CISR}
+\tab
+$a\equiv b\mod{m} \iff a$ and $b$ have the same remainder after division by $m$.
+\propn{Congruent to Remainder}{CTR}
+$\forall a,b\in\mathbb{Z}\,, 0\leq b \leq m-1 : a\equiv b\mod{m}\iff$ the remainder of $a$ after division by $m$ is $b$.
+\nextline
+Consequently, every $a\in\mathbb{Z}$ is congruent to a unique integer in $[0,m-1]\subseteq\mathbb{Z}$  mod $m$.
+\subsection{Examples}
+\begin{tabular}{r l l}
+25 & $\equiv 32$ & $\mod{7}$ \\
+& $\equiv 18$ & $\mod{7}$ \\
+& $\equiv 11$ & $\mod{7}$ \\
+& $\equiv \mathbf{4}$ & $\mod{7}$ \\
+& $\equiv -3$ & $\mod{7}$ \\
+& $\equiv -10$ & $\mod{7}$ \\
+& $\cdots$ & $\mod{7}$
+\end{tabular}
+\nextline
+4 is distinguished, as it is the remainder of 25 after division by 7.
+\newline
+\nextline
+\textit{Find the remainder of $5^{10}$ after division by 7}
+\nextline
+We want to compute $5^{10}\mod{7}$. Since $5^{10} = \left(5^2\right)^5 = 25^5$. We know $25\equiv 4\mod{7}$ and by
+\hyperref[sec:CP]{Congruent Powers}
+we get $\equiv 4^5\mod{7}$
+\nextline
+$\equiv 4^3\cdot 4^2\mod{7}$ \nextline
+$\equiv (63+1) \cdot (14+2) \mod{7}$ \nextline
+$\equiv 1\cdot 2 \mod{7}$ \nextline
+$\equiv 2\mod{7}$ \nextline
+Therefore, the remainder of $5^{10}$ after division by 7 is 2.
+\newline
+\nextline
+\textit{Find the remainder of} $77^{100}\cdot 999 - 6^{83} \mod{4}$
+\nextline
+We know that $77=80-3\equiv -3\mod{4}\equiv 1\mod{4}$ by \hyperref[sec:CP]{Congruent Powers}.
+$999=1000-1\equiv -1\mod{4}\equiv 3\mod{4}$. Now, notice that $6^{83}=6^2\cdot6^{81}$ and since $6^2\equiv 0\mod{4}$ we get that $0\cdot6^{81}\equiv 0\mod{4}$ by \hyperref[sec:CP]{Congruent Powers}
+\nextline
+$77^{100}\cdot999 - 6^{83} \equiv 1^{100}\cdot3 - 0\mod{4} \equiv 3\mod{4}$
+\hyperref[sec:ARC]{Congruence and Multiplication}
+\subsection{Sum of Factorial Example}
+\tab
+\textit{What is the last decimal of the following expression?}
+$$\sum_{n=1}^{100} n!$$
+\nextline
+Notice that the last digit of a number is the remainder mod 10. As a smaller example, notice that $7!\equiv 0\mod{10}$ because $7!$ contains a factor $2\cdot5=10$ and thus is a multiple of 10. Therefore, we know that if $k\geq 5$ we get that $k!\equiv 0\mod{10}$
+\nextline
+Going back to our original problem, we can notice that $\forall n\geq 5$ the sum of $n!\mod{10}$ will be zero, and thus we only have to compute $1!+2!+3!+4!=1+2+6+24=33\equiv 3\mod{10}$
+\section{Divisibility Rules}
+\subsection{Divisibility by 3}
+\tab
+$\forall a \in \mathbb{Z} 3\lvert a \iff 3\lvert$ the digit sum of $a$.
+\nextline
+$3\lvert 2046 \iff 3\lvert(2+0+4+6)$. $2+4+6=12$ and since $3\lvert12$ we know $3\lvert 2046$. \nextline
+$3\nmid271 \iff 3\nmid(2+7+1)$ $2+7+1=10$ and since we know $3\nmid 10$ we know $3\nmid 271$.
+\subsection{Proof of divisibility by 3}
+\tab
+If the digits of $a$ are $d_k, d_{k-1}, d_{k-2}, \cdots, d_1+d_0$ then $a=10^kd_k + 10^{k-1}d_{k-1}+10^{k-2}d_{k-2}, \cdots, 10d_1, d_0$. This is called the decimal expansion of $a$. Since $10\equiv 1\mod{3}$ we get that \newline$a\equiv d_k + d_{k-1} + d_{k-2} + \cdots + d_1 + d_0\mod{3}$
+\subsection{Divisibility by 11}
+\tab
+$11\lvert a \iff 11\lvert$ the alternatign sum of the digits of $a$\nextline
+$11\lvert108097\iff 11\lvert(1+8+9) - (0+0+7)$ and since $1+8+9-7=11$ and $11\lvert 11$ we get that $11\lvert 108097$\nextline
+$11\nmid133 \iff 11\nmid(1+3-3)$, thus $11\nmid1\implies 11\nmid133$
+\subsection{Proof of divisibility by 11}
+\tab take
+$a=10^kd_k + 10^{k-1}d_{k-1}+10^{k-2}d_{k-2}, \cdots, 10d_1+ d_0$ to be the decimal representation of $a$. Since $10\equiv-1\mod{11}\equiv 10\mod{11}$  thus
+$a\equiv (-1)^kd_k + (-1)^{k-1}d_k-1 + \cdots + (-1)^1d_1 + 1d_0$. Now, notice that this is the sum of the digits of $a$ indexed by even values of $k$ subtracted by the odd-indexed digits of $a$ mod 11.
+\section{Linear Congruence Relations}
+\subsection{Problem: does $x^3+x^2-x+1=0$ have an integer solution?}
+\tab
+Suppse $x=a\in\mathbb{Z}$ is a \soln. Thus, $a^3+a^2-a+1=0$. Thus, since both sides are integers, we know that $\forall m \in \mathbb{N}$, $a^3+a^2-a+1\equiv 0 \mod{m}$.
+\nextline
+Consider the equation in modulo 3. Notice now that $a$ can be either 0, 1, or 2 (mod 3). If $a\equiv0\mod{3}$ we get that $1\equiv0\mod{3}$ which is false. If $a\equiv1\mod{3}$ we get that $1+1=2\equiv0\mod{3}$ which is still false. If $a\equiv2\mod{3}$ then $a\equiv-1\mod{3}$ and thus we get $-1+1-(-1)+1=2\equiv0\mod{3}$ which is still false. Therefore, since there are no integer solutions moldulo 3, there are no integer solutions to the equation $a^3+a^2-a+1=0$.
+\chapter{Linear Congruence}
+\tab $y^2=4x+2$ can be solved over the integers by solving the relation mod m. If there are no solutions for a particular $m$, then there are no solutions over the integers. $y^2\equiv4x+2\mod{m}$. There's a finite process to check $y^2 \equiv 4x+2\mod{m}$ compared to the infinite process to check $y^2=4x+2$.
+\nextline
+\defn A Linear Congruence Equation is an equation of the form $ax\equiv c\mod{m}$ where $a,c\in\mathbb{Z}$ and $m\in\mathbb{N}$ are fixed and $a\not\equiv 0\mod{m}$. We wish to find \soln for $x$ over the integers.
+\section{Methods of Solving}
+\subsection{Brute Force}
+$5x\equiv 2\mod{3}$ 
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+$x\mod{3}$ & 0 & 1 & 2 \\
+\hline
+$5x$ & 0 & 5 & 10 \\
+\hline
+$5x\mod{3}$ & 0 & 2 & 1 \\
+\end{tabular}
+\end{center}
+\tab
+We see that the only solution to this is when $x\equiv 1\mod{3}$.
+\subsection{LDE}
+$5x\equiv 2\mod{3} \iff 5x=2+3k$ $\fs k\in\mathbb{Z}$. \nextline
+$\iff 5x-3k=2$ \nextline
+$\iff 5x+3y=2$ for $y=-k$ \nextline
+Let $d=\gcd(5,3)$, then notice that $d\lvert 2$ thus by \hyperref[sec:ldeta]{LDET1} there are infinite solutions.
+Solve for $x,y$.
+\nextline
+By inspection we see that a particular \soln is $(x_0,y_0) = (1,-1)$. Using \hyperref[sec:ldetb]{LDET2} we can get the general solutions given by
+$$\begin{cases}
+x=1 + 3n \\
+y=-1 - 5n
+\end{cases}$$
+\section{Examples}
+$2x\equiv3\mod{4}$
+\nextline
+By Method 1:
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+$x\mod{4}$ & 0 & 1 & 2 & 3 \\
+\hline
+$2x$ & 0 & 2 & 4 & 6 \\
+\hline
+$2x\mod{4}$ & 0 & 2 & 0 & 2 \\
+\end{tabular}
+\end{center}
+\tab
+Since there is no value of $3$ in the table, there is no \soln to $2x\equiv 3\mod{4}$
+\nextline
+By Method 2:
+\nextline
+$2x\equiv3\mod{4} \iff 2x+4y=3$. Since $\gcd(2,4)\nmid3$, by \hyperref[sec:ldeta]{LDET1} there is no \soln to the equation.
+\thm{Linear Congruence Theorem}{LC}
+\tab
+Consider the Linear Congruence Equation $ax\equiv c\mod{m}$ where $a,c\in\mathbb{Z}$ and $m\in\mathbb{N}$ are fixed and $a\not\equiv 0\mod{m}$. Let $d=\gcd(a,m)$. Then, solutions exist if and only if $d\lvert c$ by \hyperref[sec:ldeta]{LDET1}. If $d\lvert c$ and if $x_0$ is a \soln then the general solution set is given by the following (using \hyperref[sec:ldetb]{LDET2})
+$$\left\{
+x\in\mathbb{Z}\mid x=x_0+\frac{m}{d}n\, \fs n\in\mathbb{Z}
+\right\}$$
+$$\left\{
+x\in\mathbb{Z}\mid x\equiv x_0\mod{\frac{m}{d}}
+\right\}$$
+\tab
+Notice for the second set, there are $d$ \soln mod $m$
+\subsection{Proof}
+$ax\equiv c\mod{m}\iff ax+my=c$ so \soln exist $\iff d\lvert c$ by \hyperref[sec:ldeta]{LDET1}.\nextline
+If $x_0$ is a \soln for x, then by \hyperref[sec:ldetb]{LDET2} the general \soln set is
+$$\left\{
+x\in\mathbb{Z} \mid x=x_0+\frac{m}{d}n\,\fs n\in\mathbb{Z}
+\right\}$$
+\tab
+Since $x=x_0+\frac{m}{d}n \iff x\equiv x_0\mod{\frac{m}{d}}$
+\nextline
+Finally, if $x=x_0+\frac{m}{d}n$ then by applying the Division Algorithm, we get $n=qd+r$, $0\leq r < d$. Thus $x=x_0+\frac{m}{d}n \iff x=x_0+(qd+r)\frac{m}{d} = x_0 + mq + r\frac{m}{d}$\nextline
+$\iff x\equiv x_0+r\frac{m}{d}\mod{m}$, $0\leq r \leq d-1$
+\newline
+\null\hfill$\mathcal{QED}$
+\subsection{More Examples}
+Solve $12x\equiv 9\mod{15}$\nextline
+\soln: Step1: (gcd check)
+$d=\gcd(12,15)=3$ and $3\lvert9$ thus solutions exist\newline
+Step2 (Particular \soln)\nextline
+$12x+15y=9$. By EEA we get $(x_0, y_0) = (-3,3)$.\nextline
+$x\equiv x_0\mod{\frac{m}{d}}$.\nextline
+$\equiv -3\mod{5}$\nextline
+$\equiv 2\mod{5}$\nextline
+$x=2+5k$\nextline
+Since the only unique solutions are in the integer range $[0,14]$, we know that the only solutions to $x=2+5k$ in that interval are $x\equiv2,7,12\mod{15}$.
+\section{Nonlinear Congruence Equations}
+\tab
+There is no general/efficient method of finding solutions.\nextline
+\subsection{Examples}
+$x^2\equiv 1\mod{2}$.
+\begin{center}
+\begin{tabular}{|c|c|c|}
+$x$ & 0 & 1 \\
+\hline
+$x^2$ & 0 & 1
+\end{tabular}
+\end{center}
+\tab
+Thus $x\equiv 1\mod{2}$ is the only \soln
+\nextline
+$x^2\equiv 1\mod{4}$
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+$x$ & 0 & 1 & 2 & 3\\
+\hline
+$x^2$ & 0 & 1 & 4 & 9 \\
+\hline
+$x^2\mod{4}$ & 0 & 1 & 0 & 1
+\end{tabular}
+\end{center}
+\tab
+Therefore, the solutions are $x\equiv 1,3\mod{4}$.
+\nextline
+Solving $x^2\equiv 1\mod{8}$ gives 4 solutions $\left(x\equiv1,3,5,7\mod{8}\right)$. Solving $x^2\equiv 1\mod{2^k}\, \fs k\geq3$ will have only 4 solutions.
 \end{document}
